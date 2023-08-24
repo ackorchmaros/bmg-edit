@@ -26,7 +26,7 @@ class Build2:
                  minimize=True,
                  obj_function_args=None,
                  greedy_repeats=5,
-                 weighted_mincut=False, triple_weights=None,):
+                 weighted_mincut=False, triple_weights=None):
         
         self.R = R
         self.L = L
