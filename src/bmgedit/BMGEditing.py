@@ -34,15 +34,12 @@ class BMGEditor:
         if not binary:
             self.binarize = False
             if use_binary_triples:
-                self.binary_triples = True
                 self.R = binary_explainable_triples(G, color_dict=self.color_dict)
             else:
-                self.binary_triples = False
                 self.R = informative_triples(G, color_dict=self.color_dict)
         else:
             self.binarize = binarization_mode
             self.R = binary_explainable_triples(G, color_dict=self.color_dict)
-            self.binary_triples = True
             
         # current tree built by one of the heuristics
         self._tree = None
