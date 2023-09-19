@@ -23,7 +23,7 @@ __author__ = 'David Schaller'
 class BMGEditor:
     """Wrapper for triple-based BMG editing heuristics."""
     
-    def __init__(self, G, binary=False, binarization_mode='balanced',use_binary_triples=True):
+    def __init__(self, G, binary=False, binarization_mode='balanced', use_binary_triples=True):
         
         self.G = G
         self.color_dict = sort_by_colors(G)
@@ -43,8 +43,8 @@ class BMGEditor:
             
         # current tree built by one of the heuristics
         self._tree = None
-        
-    
+
+
     def extract_consistent_triples(self):
         
         if not self._tree:
@@ -66,7 +66,7 @@ class BMGEditor:
         else:
             raise ValueError('unknown mode for objective ' \
                              'function: {}'.format(objective))
-        
+
         method = method.lower()
         
         if method == 'bpmf':
@@ -82,7 +82,7 @@ class BMGEditor:
                            minimize=minimize,
                            obj_function_args=(self.G,),
                            weighted_mincut=True,
-                           binary_triples=self.binary_triples)
+                          )
             self._tree = build.build_tree()
         else:
             raise ValueError('unknown partition method: {}'.format(method))
@@ -99,7 +99,7 @@ class BMGEditor:
             build = Build2(R_consistent, self.L,
                            allow_inconsistency=False,
                            binarize=self.binarize,
-                           binary_triples=self.binary_triples)
+                          )
             tree = build.build_tree()
             reconstruct_reconc_from_graph(tree, self.G)
         
